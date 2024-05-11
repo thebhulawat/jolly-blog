@@ -1,4 +1,4 @@
-blogged 
+Static blog generation using Next js MDX
 
 ## Getting Started
 
