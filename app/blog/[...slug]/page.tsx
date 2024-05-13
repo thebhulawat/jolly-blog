@@ -22,7 +22,8 @@ export async function generateStaticParams() : Promise<PostPageParams["params"][
 
 export default async function PostPage({params} : PostPageParams) {
     const post = await getPostFromParams(params)
-    if (!post || post.published) {
+    
+    if (!post || !post.published) {
         notFound()
     }
 
