@@ -6,17 +6,20 @@ const computedFields = <T extends {slug: string}>(data: T) => ({
 }) 
 
 const posts = defineCollection({
-    name: "Post", 
-    pattern: "blog/**/*.mdx", 
-    schema: s.object({
+    name: "Post",
+    pattern: "blog/**/*.mdx",
+    schema: s
+      .object({
         slug: s.path(),
-        title: s.string().max(99), 
-        description: s.string().max(999).optional(), 
-        date: s.isodate(), 
-        published: s.boolean().default(true), 
+        title: s.string().max(99),
+        description: s.string().max(999).optional(),
+        date: s.isodate(),
+        published: s.boolean().default(true),
+        tags: s.array(s.string()).optional(),
         body: s.mdx(),
-    }).transform(computedFields),
-})
+      })
+      .transform(computedFields),
+  });
 
 export default defineConfig({
     root: "content", 
